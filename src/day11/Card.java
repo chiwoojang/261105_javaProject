@@ -68,6 +68,11 @@ public class Card {
 		}
 		this.shape = shape;
 	}
+
+	@Override
+	public String toString() {
+		return shape + num;
+	}
 	
 	
 }
