@@ -13,7 +13,7 @@ public class Super02 {
 		c.printInfo();
 		c.howl();
 		
-		Tiger t = new Tiger("호돌이");  //오버로딩, 카테고리 자동입력
+		Tiger t = new Tiger("호돌이","호랑이"); 
 		t.printInfo();
 		t.howl();
 		
