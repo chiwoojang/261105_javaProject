@@ -22,7 +22,7 @@ public class StudentController implements StudentProgram {
 		// TODO Auto-generated method stub
 		String name="";
 		do {
-			System.out.println("학생정보를 입력해 주세요.(종료 0)");
+			System.out.println("학생정보를 입력해 주세요.(나가기 0)");
 			System.out.println("이름 >");
 			name = scan.next();
 			if(name.equals("0")) {
@@ -102,30 +102,71 @@ public class StudentController implements StudentProgram {
 	public void searchStudent(Scanner scan) {
 		// TODO Auto-generated method stub
 		String name = "";
+		String subject="";
 		do {
 			if(stuIndex==0) {
 				System.out.println("수강신청자가 없습니다. 종료합니다.");
 				return;
-			}			
-			System.out.println("검색할 학생명을 입력하세요(종료 0)>");
-			name = scan.next();
-			if(name.equals("0")) {
+			}	
+			
+			System.out.println("무엇으로 검색할까요? (학생명->1, 강좌명->2, 나가기->0)");
+			int searchType = scan.nextInt();
+			if(searchType==0) {
 				return;
 			}
+			if(searchType!=1&&searchType!=2) {
+				System.out.println("검색타입 설정이 잘못되었습니다.");
+				continue;
+			}
+			System.out.println(searchType==1?"검색할 학생명을 입력하세요(나가기 0)>"
+					: "검색할 과목명을 입력해 주세요(나가기 0)");
 			
-			
-			int cnt = 0;
-			System.out.println("학생번호\t학생이름\t전화번호\t학원명\t지점\t수강강좌");
-			for(int i=0;i<stuIndex;i++) {
-				if(students[i].getName().contains(name)) {
-					System.out.print((i+1)+".\t");
-					System.out.println(students[i]);
-					cnt++;
+			if(searchType==1) {				
+				name = scan.next();
+				if(name.equals("0")) {
+					return;
 				}
+				int cnt = 0;
+				System.out.println("학생번호\t학생이름\t전화번호\t학원명\t지점\t수강강좌");
+				for(int i=0;i<stuIndex;i++) {
+					if(students[i].getName().contains(name)) {
+						System.out.print((i+1)+".\t");
+						System.out.println(students[i]);
+						cnt++;
+					}
+				}
+				if(cnt==0) {
+					System.out.println("----------"+name +"으로 검색결과가 없습니다.---------");
+				}
+			}else {
+				subject = scan.next().toLowerCase();
+				if(subject.equals("0")) {
+					return;
+				}
+				int cnt = 0;
+				System.out.println("학생번호\t학생이름\t전화번호\t학원명\t지점\t수강강좌");
+				for(int i=0;i<stuIndex;i++) {
+//					System.out.println("debug1");
+					
+					if(students[i].getIndex()>0) {
+//						System.out.println("debug2");
+						for(int j=0;j<students[i].getIndex();j++) {							
+//							System.out.println("debug3");
+							if(students[i].getSubject()[j].getSubject().toLowerCase().contains(subject)) {
+								System.out.print((i+1)+".\t");
+								System.out.println(students[i]);
+								cnt++;
+								break;
+							}
+						}
+					}
+				}
+				if(cnt==0) {
+					System.out.println("----------["+subject +"]로 검색결과가 없습니다.---------");
+				}				
 			}
-			if(cnt==0) {
-				System.out.println("----------"+name +"으로 검색결과가 없습니다.---------");
-			}
+			
+			
 			
 		}while(!name.equals("0"));
 		
@@ -161,7 +202,7 @@ public class StudentController implements StudentProgram {
 		
 		int subNo=0;
 		do {			
-			System.out.println("수강할 강좌 번호를 입력해 주세요. (종료 0) >");
+			System.out.println("수강할 강좌 번호를 입력해 주세요. (나가기 0) >");
 			subNo = scan.nextInt();
 			
 			if(subNo<1 || subNo > subIndex) {
@@ -205,7 +246,7 @@ public class StudentController implements StudentProgram {
 				return;
 			}
 						
-			System.out.println("취소할 수강강좌 번호를 입력하세요.(취소 0) >");
+			System.out.println("취소할 수강강좌 번호를 입력하세요.(나가기 0) >");
 			subNo = scan.nextInt();
 			if(subNo<1 || subNo > students[stuNo-1].getIndex()) {
 				System.out.println("수강번호 입력이 잘못되었습니다. 다시 업력하세요.");
