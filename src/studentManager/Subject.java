@@ -2,11 +2,21 @@ package studentManager;
 
 public class Subject {
 	private String subject;
-	private String teacher;
+	private String teacher="미지정";
+	
+	public Subject() {}
+	public Subject(String subject) {
+		this.subject = subject;
+	}
+	public Subject(String subject,String teacher) {
+		this.subject = subject;
+		this.teacher = teacher;
+	}
+	
 	
 	@Override
 	public String toString() {
-		return "Subject [subject=" + subject + ", teacher=" + teacher + "]";
+		return subject + "\t" + teacher;
 	}
 
 	public String getSubject() {
