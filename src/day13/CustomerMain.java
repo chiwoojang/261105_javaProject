@@ -110,16 +110,20 @@ public class CustomerMain {
 		// 상담사 짱아(1) => 철이(3)
 		for(int i=0;i<customers.length;i++) {
 			if(customers[i] instanceof CustomerVip) {
-				if(((CustomerVip)customers[i]).getAgentName().equals("짱아")){
-					((CustomerVip)customers[i]).setAgentName("철이");
-					((CustomerVip)customers[i]).setAgentNo("3");
+//				if(((CustomerVip)customers[i]).getAgentName().equals("짱아")){
+//					((CustomerVip)customers[i]).setAgentName("철이");
+//					((CustomerVip)customers[i]).setAgentNo("3");
+//				}
+				CustomerVip vip = (CustomerVip)customers[i];  // 참조복사해서 씀
+				if(vip.getAgentName().equals("짱아")) {
+					vip.setAgentName("철이");
+					vip.setAgentNo("3");
 				}
+				
+				// VIP List 출력됨.
 				customers[i].printCustomer();
 			}
 		}
-		
-		
-		
 		
 		
 
