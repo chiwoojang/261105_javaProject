@@ -1,5 +1,6 @@
 package day15;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class WordController {
@@ -26,10 +27,16 @@ public class WordController {
 				case 4 : dic.printWord();break;
 				case 5 : dic.removeWord(scan);break;
 				case 6 : System.out.println("종료");return;
-				default : System.out.println("메뉴에 없습니다.");
+				default : System.out.println("메뉴에 없습니다.");break;
 				}
-			} catch (Exception e) {
+//				scan.nextLine();
+			} catch (InputMismatchException e) {
+				
 				System.out.println("입력이 잘못되었습니다.");
+				scan.nextLine();  // 입력버퍼 지우기
+			}
+			catch (Exception e) {
+				System.out.println("다시 입력해 주세요.");
 				scan.nextLine();
 			}
 
