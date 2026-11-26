@@ -129,9 +129,10 @@ public class ProductController implements ProductProgram {
 		
 		
 		// 향후 동일 주문이 있으면 기존 주문에 개수를 합침
-		if(order.contains(new Order<String,Integer>(menu.get(menuNum-1).getMenu()))) {
+
+		int index = order.indexOf(new Order<String,Integer>(menu.get(menuNum-1).getMenu())); 
+		if(index!=-1) {
 //			System.out.println("--In the Process--");
-			int index = order.indexOf(new Order<String,Integer>(menu.get(menuNum-1).getMenu())); 
 			order.get(index).setCount(order.get(index).getCount()+buy);
 			order.get(index).totalPrice();
 		}else {

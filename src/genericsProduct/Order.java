@@ -25,7 +25,7 @@ public class Order<K,V extends Number> extends Product<K, V> {
 	// 출력 print()  메뉴 price 개수 total
 	
 	public void printOrder() {
-		System.out.println(super.getMenu()+"("+super.getPrice()+") " + count +"개\t" + total);
+		System.out.println(super.getMenu()+"("+super.getPrice()+"원) " + count +"개\t" + total + " 원");
 	}
 	
 	
