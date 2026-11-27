@@ -44,7 +44,6 @@ public class WordController {
 				case 6 : System.out.println("종료");return;
 				default : System.out.println("메뉴에 없습니다.");break;
 				}
-//			scan.nextLine();
 			} catch (InputMismatchException e) {
 				
 				System.out.println("입력이 잘못되었습니다.");
@@ -61,7 +60,6 @@ public class WordController {
 		String[] arrMean = str.split(sep);
 		List<String> listMean = new ArrayList<>();
 		for(int i=0;i<arrMean.length;i++) {
-//			String strMean = arrMean[i].replace("\\n",System.lineSeparator());
 			listMean.add(arrMean[i]);
 		}
 		return listMean;
@@ -84,11 +82,7 @@ public class WordController {
 		// 앞의 단어에서 입력한 enter가 입렵버퍼에 남아 있어서다음 nextLine()에 영향을 미침
 		// 뜻에 공백을 같이 포함하려면 nextLine();
 		String meaning = scan.nextLine();
-//		String[] arrMean = meaning.split("::");
-//		List<String> listMean = new ArrayList<>();
-//		for(int i=0;i<arrMean.length;i++) {
-//			listMean.add(arrMean[i]);
-//		}
+
 		List<String> listMean = returnList(meaning,"::");
 		wordBook.add(new Word(word,listMean));
 		System.out.println("단어 등록 완료");		
@@ -98,7 +92,6 @@ public class WordController {
 	private void removeWord() {
 		// TODO Auto-generated method stub
 		System.out.println("단어 > ");
-//		scan.nextLine();
 		String word = scan.next();
 		scan.nextLine(); // -> next() 이후 enter 값을 비워준다.		
 		//만약 word가 존재하면 단어 존재 -> 나가기
@@ -130,7 +123,6 @@ public class WordController {
 	}
 	private void modifyWord() {
 		System.out.println("단어 > ");
-//		scan.nextLine();
 		String word = scan.next();
 		scan.nextLine(); // -> next() 이후 enter 값을 비워준다.		
 		//만약 word가 존재하면 단어 존재 -> 나가기
@@ -153,7 +145,6 @@ public class WordController {
 	}
 	private void searchWord() {
 		System.out.println("단어 > ");
-//		scan.nextLine();
 		String word = scan.next();
 		scan.nextLine(); // -> next() 이후 enter 값을 비워준다.		
 		//만약 word가 존재하면 단어 존재 -> 나가기
